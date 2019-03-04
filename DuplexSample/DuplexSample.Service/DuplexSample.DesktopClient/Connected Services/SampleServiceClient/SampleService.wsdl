@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.acme.com/api" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SampleService" targetNamespace="http://www.acme.com/api" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="http://localhost:8731/SampleService/?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.acme.com/api/Imports">
+      <xsd:import schemaLocation="http://localhost:8731/SampleService/?xsd=xsd0" namespace="http://www.acme.com/api" />
+      <xsd:import schemaLocation="http://localhost:8731/SampleService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8731/SampleService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DuplexSample.Service" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISampleService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAllProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProducts" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAllProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProduct" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_AddProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_AddProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_RemoveProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveProduct" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_RemoveProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_OnProductAdded_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProductAdded" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_OnProductUpdated_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProductUpdated" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_OnProductDeleted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProductDeleted" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="ISampleService">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Login">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/Login" message="tns:ISampleService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/LoginResponse" message="tns:ISampleService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="true" name="Logout">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/Logout" message="tns:ISampleService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/LogoutResponse" message="tns:ISampleService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetAllProducts">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/GetAllProducts" message="tns:ISampleService_GetAllProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/GetAllProductsResponse" message="tns:ISampleService_GetAllProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetProduct">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/GetProduct" message="tns:ISampleService_GetProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/GetProductResponse" message="tns:ISampleService_GetProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddProduct">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/AddProduct" message="tns:ISampleService_AddProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/AddProductResponse" message="tns:ISampleService_AddProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/UpdateProduct" message="tns:ISampleService_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/UpdateProductResponse" message="tns:ISampleService_UpdateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RemoveProduct">
+      <wsdl:input wsaw:Action="http://www.acme.com/api/ISampleService/RemoveProduct" message="tns:ISampleService_RemoveProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/RemoveProductResponse" message="tns:ISampleService_RemoveProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="OnProductAdded">
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/OnProductAdded" message="tns:ISampleService_OnProductAdded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="OnProductUpdated">
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/OnProductUpdated" message="tns:ISampleService_OnProductUpdated_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="OnProductDeleted">
+      <wsdl:output wsaw:Action="http://www.acme.com/api/ISampleService/OnProductDeleted" message="tns:ISampleService_OnProductDeleted_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="SampleService">
+    <wsdl:port name="NetTcpBinding_ISampleService" binding="i0:NetTcpBinding_ISampleService">
+      <soap12:address location="net.tcp://localhost:8732/SampleService/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8732/SampleService/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
