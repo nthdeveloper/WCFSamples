@@ -69,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISampleAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleAPI.cs" />
   </ItemGroup>
